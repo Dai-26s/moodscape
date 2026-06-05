@@ -5,6 +5,7 @@ import Background from './components/Background';
 import { useLang } from './i18n/LanguageContext';
 import { type HumanState, type Weather, type Place, type Mood, type BodyState, type SocialEnergy, type MatchResult } from './types';
 import { matchMovies } from './engine/matcher';
+import { translateDescription } from './i18n/translateDesc';
 import './App.css';
 
 function getTimeString(): string {
@@ -105,6 +106,13 @@ export default function App() {
 
   const isZh = lang === 'zh';
 
+  const getDescription = (movie: { title: string; description: string }) => {
+    if (isZh) {
+      return translateDescription(movie.title, movie.description);
+    }
+    return movie.description;
+  };
+
   return (
     <div className={`app ${isZh ? 'lang-zh' : ''}`}>
       <Background />
@@ -138,11 +146,11 @@ export default function App() {
                       <motion.button
                         key={opt.key}
                         className={`option-btn ${weather === opt.key ? 'selected' : ''}`}
+                        data-texture={opt.key}
                         onClick={() => setWeather(opt.key)}
-                        whileTap={{ scale: 0.95 }}
-                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.97 }}
+                        whileHover={{ scale: 1.02 }}
                       >
-                        <span className="option-icon">{opt.icon}</span>
                         <span className="option-label">{tl.weather[opt.key]}</span>
                       </motion.button>
                     ))}
@@ -158,11 +166,11 @@ export default function App() {
                       <motion.button
                         key={opt.key}
                         className={`option-btn ${place === opt.key ? 'selected' : ''}`}
+                        data-texture={opt.key}
                         onClick={() => setPlace(opt.key)}
-                        whileTap={{ scale: 0.95 }}
-                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.97 }}
+                        whileHover={{ scale: 1.02 }}
                       >
-                        <span className="option-icon">{opt.icon}</span>
                         <span className="option-label">{tl.place[opt.key]}</span>
                         {opt.literary && tl.placeLiterary[opt.key as 'hometown' | 'dont_belong'] && (
                           <span className="option-literary">{tl.placeLiterary[opt.key as 'hometown' | 'dont_belong']}</span>
@@ -181,11 +189,11 @@ export default function App() {
                       <motion.button
                         key={opt.key}
                         className={`option-btn mood-btn ${mood === opt.key ? 'selected' : ''}`}
+                        data-texture={opt.key}
                         onClick={() => setMood(opt.key)}
-                        whileTap={{ scale: 0.95 }}
-                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.97 }}
+                        whileHover={{ scale: 1.02 }}
                       >
-                        <span className="option-icon">{opt.icon}</span>
                         <span className="option-label">{tl.mood[opt.key]}</span>
                       </motion.button>
                     ))}
@@ -202,11 +210,11 @@ export default function App() {
                       <motion.button
                         key={opt.key}
                         className={`option-btn body-btn ${body.includes(opt.key) ? 'selected' : ''}`}
+                        data-texture={opt.key}
                         onClick={() => toggleBody(opt.key)}
-                        whileTap={{ scale: 0.95 }}
-                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.97 }}
+                        whileHover={{ scale: 1.02 }}
                       >
-                        <span className="option-icon">{opt.icon}</span>
                         <span className="option-label">{tl.body[opt.key]}</span>
                       </motion.button>
                     ))}
@@ -222,11 +230,11 @@ export default function App() {
                       <motion.button
                         key={opt.key}
                         className={`option-btn ${social === opt.key ? 'selected' : ''}`}
+                        data-texture={opt.key}
                         onClick={() => setSocial(opt.key)}
-                        whileTap={{ scale: 0.95 }}
-                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.97 }}
+                        whileHover={{ scale: 1.02 }}
                       >
-                        <span className="option-icon">{opt.icon}</span>
                         <span className="option-label">{tl.social[opt.key]}</span>
                       </motion.button>
                     ))}
@@ -269,7 +277,6 @@ export default function App() {
                   className="continue-btn"
                   onClick={() => {
                     setShowEasterEgg(true);
-                    
                     setSelectedMovie(results.find(r => r.movie.id !== 'swiss-army-man') || results[0]);
                   }}
                   whileTap={{ scale: 0.95 }}
@@ -295,12 +302,22 @@ export default function App() {
                   transition={{ duration: 0.5 }}
                 >
                   <div className="movie-poster-container">
-                    <img
-                      src={selectedMovie.movie.poster}
-                      alt={selectedMovie.movie.title}
-                      className="movie-poster"
-                      onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
-                    />
+                    {selectedMovie.movie.poster ? (
+                      <img
+                        src={selectedMovie.movie.poster}
+                        alt={selectedMovie.movie.title}
+                        className="movie-poster"
+                        onError={(e) => {
+                          const el = e.target as HTMLImageElement;
+                          el.style.display = 'none';
+                          const fallback = el.parentElement?.querySelector('.movie-poster-fallback') as HTMLElement;
+                          if (fallback) fallback.style.display = 'flex';
+                        }}
+                      />
+                    ) : null}
+                    <div className="movie-poster-fallback" style={{ display: selectedMovie.movie.poster ? 'none' : 'flex' }}>
+                      🎬
+                    </div>
                     <div className="match-score">
                       <span className="score-number">{selectedMovie.score}</span>
                       <span className="score-percent">{tl.result.match}</span>
@@ -312,7 +329,7 @@ export default function App() {
                     <p className="movie-meta">
                       {selectedMovie.movie.year} · {selectedMovie.movie.director}
                     </p>
-                    <p className="movie-description">{selectedMovie.movie.description}</p>
+                    <p className="movie-description">{getDescription(selectedMovie.movie)}</p>
 
                     <div className="movie-reason">
                       <span className="reason-icon">💭</span>
@@ -344,12 +361,16 @@ export default function App() {
                           transition={{ delay: 0.2 + i * 0.1 }}
                           whileHover={{ scale: 1.02 }}
                         >
-                          <img
-                            src={r.movie.poster}
-                            alt={r.movie.title}
-                            className="alt-poster"
-                            onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
-                          />
+                          {r.movie.poster ? (
+                            <img
+                              src={r.movie.poster}
+                              alt={r.movie.title}
+                              className="alt-poster"
+                              onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                            />
+                          ) : (
+                            <div className="movie-poster-fallback" style={{ width: 100, height: 150, fontSize: '1.5rem' }}>🎬</div>
+                          )}
                           <div className="alt-info">
                             <span className="alt-title">{r.movie.title}</span>
                             <span className="alt-score">{r.score}{tl.result.match}</span>
