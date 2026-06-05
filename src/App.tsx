@@ -376,7 +376,7 @@ export default function App() {
                   onClick={() => {
                     setStep(0); setWeather(null); setPlace(null); setMood(null);
                     setBody([]); setSocial(null); setResults(null);
-                    setSelectedMovie(null); setShowEasterEgg(false); setEggMovie(null);
+                    setSelectedMovie(null); setShowEasterEgg(false);
                   }}
                   whileTap={{ scale: 0.95 }}
                   whileHover={{ scale: 1.03 }}
