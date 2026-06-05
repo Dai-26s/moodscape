@@ -65,7 +65,6 @@ export default function App() {
   const [results, setResults] = useState<MatchResult[] | null>(null);
   const [selectedMovie, setSelectedMovie] = useState<MatchResult | null>(null);
   const [showEasterEgg, setShowEasterEgg] = useState(false);
-  const [eggMovie, setEggMovie] = useState<MatchResult | null>(null);
   const timeStr = useMemo(() => getTimeString(), []);
 
   const humanState = useMemo((): HumanState | null => {
@@ -270,7 +269,7 @@ export default function App() {
                   className="continue-btn"
                   onClick={() => {
                     setShowEasterEgg(true);
-                    setEggMovie(selectedMovie);
+                    
                     setSelectedMovie(results.find(r => r.movie.id !== 'swiss-army-man') || results[0]);
                   }}
                   whileTap={{ scale: 0.95 }}
