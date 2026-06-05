@@ -125,7 +125,7 @@ export default function App() {
                         data-texture={k}
                         onClick={() => setPlace(k)}
                         whileTap={{ scale: 0.97 }} whileHover={{ scale: 1.02 }}
-                        dangerouslySetInnerHTML={{ __html: `<span class="texture-bg">${textureSVG(k)}</span><span class="option-label">${tl.place[k]}</span>${(k === 'hometown' || k === 'dont_belong') && tl.placeLiterary[k] ? `<span class="option-literary">${tl.placeLiterary[k]}</span>` : ''}` }}
+                        dangerouslySetInnerHTML={{ __html: `<span class="texture-bg">${textureSVG(k)}</span><span class="option-label">${tl.place[k]}</span>${(k === 'dormitory' || k === 'school' || k === 'dont_belong') && tl.placeLiterary[k] ? `<span class="option-literary">${tl.placeLiterary[k]}</span>` : ''}` }}
                       />
                     ))}
                   </div>
