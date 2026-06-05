@@ -1,8 +1,8 @@
 export type Weather = 'sunny' | 'rainy' | 'snow' | 'cloudy' | 'windy';
 
 export type Place =
-  | 'home' | 'office' | 'hotel' | 'airport' | 'train'
-  | 'cafe' | 'hospital' | 'unknown_city' | 'hometown' | 'dont_belong';
+  | 'home' | 'office' | 'hotel' | 'dormitory' | 'train'
+  | 'school' | 'cafe' | 'hospital' | 'unknown_city' | 'dont_belong';
 
 export type Mood =
   | 'peaceful' | 'lonely' | 'excited' | 'nostalgic' | 'heartbroken'
@@ -13,7 +13,8 @@ export type Mood =
 export type BodyState =
   | 'havent_slept_well' | 'headache' | 'too_much_coffee' | 'ate_too_much'
   | 'havent_eaten' | 'a_little_drunk' | 'sick' | 'long_day_at_work'
-  | 'havent_pooped' | 'just_cleaned_room' | 'going_through_breakup' | 'about_to_quit_job';
+  | 'havent_pooped' | 'just_cleaned_room' | 'going_through_breakup' | 'about_to_quit_job'
+  | 'feeling_energetic' | 'calm_and_steady' | 'fresh_and_clean' | 'well_rested';
 
 export type SocialEnergy = 'alone' | 'one_close_friend' | 'family' | 'crowded_city' | 'nobody_talks';
 

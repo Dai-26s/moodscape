@@ -22,12 +22,12 @@ const placeMap: Record<Place, Partial<StateVector>> = {
   home: { routine: 15, healing: 10, family: 10, small_happiness: 5 },
   office: { routine: 25, need_comfort: 10, small_happiness: -5 },
   hotel: { temporary_life: 25, lonely: 20, need_comfort: 15, quiet: 10 },
-  airport: { temporary_life: 25, adventure: 15, hope: 10, lonely: 10 },
+  dormitory: { routine: 15, lonely: 15, need_comfort: 10, hope: 10, small_happiness: 5 },
   train: { temporary_life: 20, quiet: 15, nostalgia: 10, adventure: 10 },
+  school: { routine: 20, energy: 10, hope: 10, adventure: 5, nostalgia: 15 },
   cafe: { small_happiness: 10, routine: 5, energy: 5, quiet: 10 },
   hospital: { need_comfort: 30, healing: 25, quiet: 20, lonely: 15, hope: 10 },
   unknown_city: { temporary_life: 25, lonely: 20, adventure: 15 },
-  hometown: { nostalgia: 30, healing: 15, family: 15, acceptance: 10 },
   dont_belong: { lonely: 25, temporary_life: 20, need_comfort: 20, nostalgia: 10 }
 };
 
@@ -64,7 +64,11 @@ const bodyMap: Record<BodyState, Partial<StateVector>> = {
   havent_pooped: { body_discomfort: 15, humor_needed: 15, need_comfort: 10, quiet: 10 },
   just_cleaned_room: { small_happiness: 20, routine: 10, healing: 10, hope: 10 },
   going_through_breakup: { lonely: 20, catharsis: 25, need_comfort: 30, broken_life: 20, nostalgia: 15, healing: 10 },
-  about_to_quit_job: { hope: 20, adventure: 20, lonely: 10, catharsis: 15, broken_life: 15, temporary_life: 15 }
+  about_to_quit_job: { hope: 20, adventure: 20, lonely: 10, catharsis: 15, broken_life: 15, temporary_life: 15 },
+  feeling_energetic: { energy: 30, small_happiness: 20, adventure: 15, hope: 15 },
+  calm_and_steady: { acceptance: 20, quiet: 20, healing: 15, routine: 10, small_happiness: 10 },
+  fresh_and_clean: { small_happiness: 20, hope: 15, energy: 15, healing: 10, acceptance: 10 },
+  well_rested: { energy: 20, small_happiness: 20, hope: 15, healing: 10, adventure: 10 }
 };
 
 const socialMap: Record<SocialEnergy, Partial<StateVector>> = {

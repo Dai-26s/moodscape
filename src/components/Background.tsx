@@ -12,57 +12,57 @@ export default function Background() {
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
-          <radialGradient id="bgGlow1" cx="50%" cy="80%" r="50%">
-            <stop offset="0%" stopColor="#d4c5a0" stopOpacity="0.25" />
-            <stop offset="100%" stopColor="#d4c5a0" stopOpacity="0" />
+          <radialGradient id="bgG1" cx="20%" cy="15%" r="55%">
+            <stop offset="0%" stopColor="#f0e8d8" stopOpacity="0.5" />
+            <stop offset="100%" stopColor="#f5f5f7" stopOpacity="0" />
           </radialGradient>
-          <radialGradient id="bgGlow2" cx="70%" cy="30%" r="40%">
-            <stop offset="0%" stopColor="#c0b8d4" stopOpacity="0.15" />
-            <stop offset="100%" stopColor="#c0b8d4" stopOpacity="0" />
+          <radialGradient id="bgG2" cx="85%" cy="75%" r="50%">
+            <stop offset="0%" stopColor="#e8e4f0" stopOpacity="0.4" />
+            <stop offset="100%" stopColor="#f5f5f7" stopOpacity="0" />
           </radialGradient>
-          <radialGradient id="screenGlow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#fff8e7" stopOpacity="0.7" />
-            <stop offset="60%" stopColor="#d4c5a0" stopOpacity="0.2" />
-            <stop offset="100%" stopColor="#d4c5a0" stopOpacity="0" />
-          </radialGradient>
+          <pattern id="dots" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
+            <circle cx="2" cy="2" r="1.2" fill="#d4c8b0" opacity="0.35" />
+          </pattern>
+          <pattern id="crosses" x="0" y="0" width="56" height="56" patternUnits="userSpaceOnUse">
+            <path d="M28 24v8m-4-4h8" stroke="#c8b898" strokeWidth="0.8" opacity="0.25" />
+          </pattern>
+          <pattern id="filmDots" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+            <rect x="0" y="0" width="24" height="24" fill="none" />
+            <rect x="1" y="1" width="5" height="5" rx="1" fill="#d4c5a0" opacity="0.3" />
+            <rect x="18" y="1" width="5" height="5" rx="1" fill="#d4c5a0" opacity="0.3" />
+          </pattern>
         </defs>
 
-        <ellipse cx="400" cy="480" rx="350" ry="200" fill="url(#bgGlow1)" />
-        <ellipse cx="560" cy="180" rx="300" ry="180" fill="url(#bgGlow2)" />
+        {/* Base fill */}
+        <rect width="800" height="600" fill="#fafaf8" />
 
-        {/* Film strip decorations */}
+        {/* Radial glows for warmth */}
+        <ellipse cx="160" cy="90" rx="440" ry="280" fill="url(#bgG1)" />
+        <ellipse cx="680" cy="450" rx="400" ry="250" fill="url(#bgG2)" />
+
+        {/* Dot grid - subtle texture */}
+        <rect width="800" height="600" fill="url(#dots)" />
+
+        {/* Film sprocket holes pattern */}
+        <rect width="800" height="600" fill="url(#filmDots)" />
+
+        {/* Tiny crosses - very subtle */}
+        <rect width="800" height="600" fill="url(#crosses)" />
+
+        {/* Small decorative film reel icons scattered */}
         <g opacity="0.06">
-          {[100, 650].map((x, i) => (
-            <g key={i}>
-              {Array.from({ length: 8 }).map((_, j) => (
-                <rect key={j} x={x} y={60 + j * 55} width={40} height={40} rx="3" fill="none" stroke="#8b6f4e" strokeWidth="1" strokeDasharray="3 3" />
-              ))}
+          {[
+            [120, 480], [680, 100], [60, 200], [720, 350]
+          ].map(([cx, cy], i) => (
+            <g key={i} transform={`translate(${cx},${cy}) scale(0.35)`}>
+              <circle cx="0" cy="0" r="18" stroke="#8b6f4e" strokeWidth="2" />
+              <circle cx="0" cy="0" r="6" fill="#8b6f4e" />
+              <rect x="-20" y="-3" width="6" height="6" rx="1" stroke="#8b6f4e" strokeWidth="1.5" />
+              <rect x="14" y="-3" width="6" height="6" rx="1" stroke="#8b6f4e" strokeWidth="1.5" />
+              <rect x="-3" y="-20" width="6" height="6" rx="1" stroke="#8b6f4e" strokeWidth="1.5" />
+              <rect x="-3" y="14" width="6" height="6" rx="1" stroke="#8b6f4e" strokeWidth="1.5" />
             </g>
           ))}
-        </g>
-
-        {/* Character */}
-        <g transform="translate(340, 350)" opacity="0.6">
-          <ellipse cx="60" cy="70" rx="70" ry="35" fill="#e8e0d4" opacity="0.7" />
-          <ellipse cx="60" cy="65" rx="65" ry="30" fill="#f0e8dc" opacity="0.6" />
-          <path d="M20 55 Q5 75 10 90" stroke="#c0b0a0" strokeWidth="12" strokeLinecap="round" fill="none" opacity="0.6" />
-          <path d="M100 55 Q115 75 110 90" stroke="#c0b0a0" strokeWidth="12" strokeLinecap="round" fill="none" opacity="0.6" />
-          <ellipse cx="60" cy="20" rx="30" ry="35" fill="#d4c8b8" opacity="0.7" />
-          <path d="M35 15 Q15 0 10 10" stroke="#c0b0a0" strokeWidth="10" strokeLinecap="round" fill="none" opacity="0.6" />
-          <path d="M85 15 Q105 0 110 10" stroke="#c0b0a0" strokeWidth="10" strokeLinecap="round" fill="none" opacity="0.6" />
-          <rect x="5" y="-5" width="55" height="3" rx="1.5" fill="#b0a090" opacity="0.6" />
-          <rect x="8" y="-40" width="49" height="36" rx="3" fill="#e0d8cc" opacity="0.7" />
-          <rect x="8" y="-40" width="49" height="36" rx="3" fill="url(#screenGlow)" opacity="0.5">
-            <animate attributeName="opacity" values="0.2;0.5;0.2" dur="3s" repeatCount="indefinite" />
-          </rect>
-          <text x="32" y="-18" textAnchor="middle" fontSize="18" opacity="0.5">🎬</text>
-          <circle cx="60" cy="-50" r="22" fill="#d4c8b8" opacity="0.7" />
-          <path d="M45 -70 Q50 -78 55 -70 Q60 -80 65 -70 Q70 -78 75 -70" stroke="#c0b0a0" strokeWidth="3" fill="none" opacity="0.5" />
-          <path d="M52 -52 Q54 -54 56 -52" stroke="#8b6f4e" strokeWidth="1.5" fill="none" opacity="0.6" />
-          <path d="M64 -52 Q66 -54 68 -52" stroke="#8b6f4e" strokeWidth="1.5" fill="none" opacity="0.6" />
-          <path d="M56 -45 Q60 -42 64 -45" stroke="#8b6f4e" strokeWidth="1.5" fill="none" opacity="0.4" />
-          <rect x="110" y="60" width="16" height="14" rx="3" fill="#c0b0a0" opacity="0.4" />
-          <path d="M126 64 Q132 64 132 70 Q132 76 126 76" stroke="#c0b0a0" strokeWidth="2" fill="none" opacity="0.4" />
         </g>
       </svg>
 

@@ -23,7 +23,7 @@ function getTimeString(): string {
 }
 
 const weatherKeys: Weather[] = ['sunny', 'rainy', 'snow', 'cloudy', 'windy'];
-const placeKeys: Place[] = ['home', 'office', 'hotel', 'airport', 'train', 'cafe', 'hospital', 'unknown_city', 'hometown', 'dont_belong'];
+const placeKeys: Place[] = ['home', 'office', 'hotel', 'dormitory', 'train', 'school', 'cafe', 'hospital', 'unknown_city', 'dont_belong'];
 const moodKeys: Mood[] = [
   'peaceful', 'lonely', 'excited', 'nostalgic', 'heartbroken', 'burned_out',
   'anxious', 'cant_sleep', 'missing_someone', 'want_to_disappear', 'need_motivation',
@@ -33,6 +33,7 @@ const bodyKeys: BodyState[] = [
   'havent_slept_well', 'headache', 'too_much_coffee', 'ate_too_much',
   'havent_eaten', 'a_little_drunk', 'sick', 'long_day_at_work',
   'havent_pooped', 'just_cleaned_room', 'going_through_breakup', 'about_to_quit_job',
+  'feeling_energetic', 'calm_and_steady', 'fresh_and_clean', 'well_rested',
 ];
 
 export default function App() {

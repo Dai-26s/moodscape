@@ -14,11 +14,11 @@ export const translations = {
     },
     weather: { sunny: 'Sunny', rainy: 'Rainy', snow: 'Snow', cloudy: 'Cloudy', windy: 'Windy' },
     place: {
-      home: 'Home', office: 'Office', hotel: 'Hotel', airport: 'Airport',
-      train: 'Train', cafe: 'Cafe', hospital: 'Hospital', unknown_city: 'Unknown City',
-      hometown: 'My hometown', dont_belong: "Somewhere I don't belong",
+      home: 'Home', office: 'Office', hotel: 'Hotel', dormitory: 'Dormitory',
+      train: 'Train', school: 'School', cafe: 'Cafe', hospital: 'Hospital', unknown_city: 'Unknown City',
+      dont_belong: "Somewhere I don't belong",
     },
-    placeLiterary: { hometown: 'Where I grew up', dont_belong: 'Out of place' },
+    placeLiterary: { dormitory: 'Shared nights', school: 'Learning days', dont_belong: 'Out of place' },
     mood: {
       peaceful: 'Peaceful', lonely: 'Lonely', excited: 'Excited',
       nostalgic: 'Nostalgic', heartbroken: 'Heartbroken', burned_out: 'Burned out',
@@ -35,6 +35,8 @@ export const translations = {
       sick: 'Sick', long_day_at_work: 'Long day at work',
       havent_pooped: "Haven't pooped for days", just_cleaned_room: 'Just cleaned my room',
       going_through_breakup: 'Going through a breakup', about_to_quit_job: 'About to quit my job',
+      feeling_energetic: 'Feeling energetic', calm_and_steady: 'Calm & steady',
+      fresh_and_clean: 'Fresh & clean', well_rested: 'Well rested',
     },
     nav: { back: '← Back', next: 'Next →', find: 'Find my film →' },
     result: {
@@ -69,11 +71,11 @@ export const translations = {
     stepSubtitles: { weather: '自动获取，可手动修改', body: '可多选，这里没有评判' },
     weather: { sunny: '晴天', rainy: '雨天', snow: '下雪', cloudy: '多云', windy: '刮风' },
     place: {
-      home: '家里', office: '办公室', hotel: '酒店', airport: '机场',
-      train: '火车上', cafe: '咖啡馆', hospital: '医院', unknown_city: '陌生城市',
-      hometown: '我的故乡', dont_belong: '不属于这里',
+      home: '家里', office: '办公室', hotel: '酒店', dormitory: '宿舍',
+      train: '火车上', school: '学校', cafe: '咖啡馆', hospital: '医院', unknown_city: '陌生城市',
+      dont_belong: '不属于这里',
     },
-    placeLiterary: { hometown: '长大的地方', dont_belong: '格格不入' },
+    placeLiterary: { dormitory: '共度的夜晚', school: '求知的日子', dont_belong: '格格不入' },
     mood: {
       peaceful: '平静', lonely: '孤独', excited: '兴奋',
       nostalgic: '怀旧', heartbroken: '心碎', burned_out: '燃尽了',
@@ -90,6 +92,8 @@ export const translations = {
       sick: '生病了', long_day_at_work: '加班好累',
       havent_pooped: '几天没拉了', just_cleaned_room: '刚打扫完房间',
       going_through_breakup: '正在经历分手', about_to_quit_job: '准备辞职',
+      feeling_energetic: '活力满满', calm_and_steady: '平平淡淡',
+      fresh_and_clean: '神清气爽', well_rested: '睡饱了',
     },
     nav: { back: '← 返回', next: '下一步 →', find: '为我找一部电影 →' },
     result: {
