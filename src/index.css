@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+SC:wght@300;400;600;700&family=ZCOOL+XiaoWei&display=swap');
+
+:root {
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #12121a;
+  --bg-card: #1a1a28;
+  --text-primary: #e8e6e3;
+  --text-secondary: #8b8a8d;
+  --text-muted: #545359;
+  --accent: #c9a96e;
+  --accent-dim: #8a7040;
+  --border: #252532;
+  --selected: #2a2a3a;
+  --gradient-start: #0a0a0f;
+  --gradient-end: #151525;
+
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-zh-serif: 'Noto Serif SC', 'STSong', 'Songti SC', serif;
+  --font-zh-art: 'ZCOOL XiaoWei', 'KaiTi', 'STKaiti', cursive;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
