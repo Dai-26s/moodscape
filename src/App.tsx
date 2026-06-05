@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import StepIndicator from './components/StepIndicator';
 import Background from './components/Background';
 import { useLang } from './i18n/LanguageContext';
-import { type HumanState, type Weather, type Place, type Mood, type BodyState, type SocialEnergy, type MatchResult } from './types';
+import { type HumanState, type Weather, type Place, type Mood, type BodyState, type MatchResult } from './types';
 import { matchMovies } from './engine/matcher';
 import { translateDescription } from './i18n/translateDesc';
 import { textureSVG } from './components/TextureSVG';
