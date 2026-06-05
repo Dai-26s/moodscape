@@ -54,7 +54,7 @@
 .time-display {
   text-align: center;
   font-family: var(--font-serif);
-  font-size: 0.95rem;
+  font-size: 1.3rem;
   color: var(--text-secondary);
   margin-bottom: 10px;
   letter-spacing: 0.03em;
@@ -64,6 +64,7 @@
 
 .lang-zh .time-display {
   font-family: var(--font-zh-serif);
+  font-size: 1.4rem;
 }
 
 /* ===== STEP INDICATOR ===== */
@@ -166,10 +167,12 @@
 /* Base option button */
 .option-btn {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 6px;
   padding: 22px 16px;
-  border: none;
+  border: 1px solid var(--border);
   border-radius: var(--radius-md);
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
@@ -179,9 +182,10 @@
   min-height: 90px;
   position: relative;
   overflow: hidden;
+  background: var(--bg-card);
   box-shadow: var(--shadow-sm);
-  color: #fff;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  color: var(--text-primary);
+  text-shadow: none;
 }
 
 .option-btn:hover {
@@ -199,7 +203,7 @@
 .option-label {
   position: relative;
   z-index: 1;
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   font-weight: 600;
   letter-spacing: 0.02em;
   line-height: 1.3;
@@ -207,7 +211,7 @@
 
 .lang-zh .option-label {
   font-family: var(--font-zh-art);
-  font-size: 1.15rem;
+  font-size: 1.25rem;
 }
 
 .option-literary {
@@ -224,175 +228,38 @@
   font-size: 0.78rem;
 }
 
-/* ===== TEXTURED BACKGROUNDS - Weather ===== */
-.option-btn[data-texture="sunny"] {
-  background: linear-gradient(135deg, #f7a64a 0%, #e88a2a 30%, #f4c26d 70%, #d4781a 100%);
-}
-.option-btn[data-texture="rainy"] {
-  background: linear-gradient(160deg, #4a6fa5 0%, #5c8ac5 30%, #3d5f8a 60%, #6b9ed4 100%);
-}
-.option-btn[data-texture="rainy"]::before {
-  content: '';
+/* ===== TEXTURED BACKGROUNDS ===== */
+.option-btn .texture-bg {
   position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(100deg, transparent, transparent 3px, rgba(255,255,255,0.06) 3px, rgba(255,255,255,0.06) 5px);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  height: 70%;
+  opacity: 0.12;
+  pointer-events: none;
   z-index: 0;
-}
-.option-btn[data-texture="snow"] {
-  background: linear-gradient(150deg, #c8d6e5 0%, #e8eef4 30%, #a8bcd4 60%, #dce6f0 100%);
-  color: #3a4a5a;
-  text-shadow: none;
-}
-.option-btn[data-texture="cloudy"] {
-  background: linear-gradient(140deg, #b8bcc4 0%, #d4d8df 30%, #a0a5af 60%, #c8ccd4 100%);
-  color: #3a3a3f;
-  text-shadow: none;
-}
-.option-btn[data-texture="windy"] {
-  background: linear-gradient(120deg, #7eb8c9 0%, #a3d4e0 30%, #5e9fae 60%, #8ec8d6 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* ===== TEXTURED BACKGROUNDS - Place ===== */
-.option-btn[data-texture="home"] {
-  background: linear-gradient(145deg, #d4a76a 0%, #c89555 30%, #e8c89a 60%, #b88444 100%);
-}
-.option-btn[data-texture="office"] {
-  background: linear-gradient(135deg, #5a6b7a 0%, #7a8d9e 30%, #4a5a6a 60%, #8a9bae 100%);
-}
-.option-btn[data-texture="hotel"] {
-  background: linear-gradient(150deg, #8b7a9e 0%, #b0a0c4 30%, #7a6a8e 60%, #c0b4d4 100%);
-}
-.option-btn[data-texture="airport"] {
-  background: linear-gradient(125deg, #4a8fb4 0%, #6aafd4 30%, #3a7fa4 60%, #7abfe4 100%);
-}
-.option-btn[data-texture="train"] {
-  background: linear-gradient(110deg, #6a8a5a 0%, #8aaa7a 30%, #5a7a4a 60%, #9aba8a 100%);
-}
-.option-btn[data-texture="cafe"] {
-  background: linear-gradient(140deg, #8b6a4a 0%, #b89a7a 30%, #7a5a3a 60%, #c4a88a 100%);
-}
-.option-btn[data-texture="hospital"] {
-  background: linear-gradient(135deg, #7ab8c8 0%, #a0d8e8 30%, #6aa8b8 60%, #b0e8f8 100%);
-  color: #2a4a5a;
-  text-shadow: none;
-}
-.option-btn[data-texture="unknown_city"] {
-  background: linear-gradient(125deg, #5a4a8a 0%, #7a6aaa 30%, #4a3a7a 60%, #8a7aba 100%);
-}
-.option-btn[data-texture="hometown"] {
-  background: linear-gradient(145deg, #d4a060 0%, #f4d090 30%, #c09050 60%, #e8c480 100%);
-}
-.option-btn[data-texture="dont_belong"] {
-  background: linear-gradient(130deg, #6a6a8a 0%, #8a8aaa 30%, #5a5a7a 60%, #9a9aba 100%);
+.option-btn .texture-bg svg {
+  width: 100%;
+  height: 100%;
 }
 
-/* ===== TEXTURED BACKGROUNDS - Mood ===== */
-.option-btn[data-texture="peaceful"] {
-  background: linear-gradient(150deg, #8aba9a 0%, #b8dad0 30%, #7aaa8a 60%, #c8ead8 100%);
-  color: #2a4a3a;
-  text-shadow: none;
-}
-.option-btn[data-texture="lonely"] {
-  background: linear-gradient(140deg, #6a7a9a 0%, #8a9aba 30%, #5a6a8a 60%, #9aaaca 100%);
-}
-.option-btn[data-texture="excited"] {
-  background: linear-gradient(120deg, #f0a050 0%, #f4c070 30%, #e89040 60%, #f8d080 100%);
-}
-.option-btn[data-texture="nostalgic"] {
-  background: linear-gradient(135deg, #c8a878 0%, #e8c898 30%, #b89868 60%, #f0d8a8 100%);
-}
-.option-btn[data-texture="heartbroken"] {
-  background: linear-gradient(130deg, #8a5a6a 0%, #aa7a8a 30%, #7a4a5a 60%, #ba8a9a 100%);
-}
-.option-btn[data-texture="burned_out"] {
-  background: linear-gradient(140deg, #5a5a6a 0%, #7a7a8a 30%, #4a4a5a 60%, #8a8a9a 100%);
-}
-.option-btn[data-texture="anxious"] {
-  background: linear-gradient(120deg, #8a6a5a 0%, #aa8a7a 30%, #7a5a4a 60%, #ba9a8a 100%);
-}
-.option-btn[data-texture="cant_sleep"] {
-  background: linear-gradient(145deg, #2a3a5a 0%, #4a5a7a 30%, #1a2a4a 60%, #5a6a8a 100%);
-}
-.option-btn[data-texture="missing_someone"] {
-  background: linear-gradient(135deg, #7a5a8a 0%, #9a7aaa 30%, #6a4a7a 60%, #aa8aba 100%);
-}
-.option-btn[data-texture="want_to_disappear"] {
-  background: linear-gradient(140deg, #8a8a9a 0%, #aaaaaa 30%, #7a7a8a 60%, #bababa 100%);
-  color: #3a3a3a;
-  text-shadow: none;
-}
-.option-btn[data-texture="need_motivation"] {
-  background: linear-gradient(125deg, #e07040 0%, #f09060 30%, #d06030 60%, #f4a070 100%);
-}
-.option-btn[data-texture="just_want_silence"] {
-  background: linear-gradient(150deg, #9aaab8 0%, #c0ccd8 30%, #8a9aa8 60%, #d0dae4 100%);
-  color: #3a4a5a;
-  text-shadow: none;
+.option-btn:hover .texture-bg {
+  opacity: 0.2;
 }
 
-/* ===== TEXTURED BACKGROUNDS - Body ===== */
-.option-btn[data-texture="havent_slept_well"] {
-  background: linear-gradient(140deg, #5a4a7a 0%, #7a6a9a 30%, #4a3a6a 60%, #8a7aaa 100%);
-}
-.option-btn[data-texture="headache"] {
-  background: linear-gradient(135deg, #7a5a4a 0%, #9a7a6a 30%, #6a4a3a 60%, #aa8a7a 100%);
-}
-.option-btn[data-texture="too_much_coffee"] {
-  background: linear-gradient(130deg, #6a4a2a 0%, #8a6a4a 30%, #5a3a1a 60%, #9a7a5a 100%);
-}
-.option-btn[data-texture="ate_too_much"] {
-  background: linear-gradient(140deg, #c87040 0%, #e09060 30%, #b86030 60%, #f0a070 100%);
-}
-.option-btn[data-texture="havent_eaten"] {
-  background: linear-gradient(135deg, #8a8a6a 0%, #aaaa8a 30%, #7a7a5a 60%, #baba9a 100%);
-  color: #3a3a2a;
-  text-shadow: none;
-}
-.option-btn[data-texture="a_little_drunk"] {
-  background: linear-gradient(120deg, #8a3a5a 0%, #aa5a7a 30%, #7a2a4a 60%, #ba6a8a 100%);
-}
-.option-btn[data-texture="sick"] {
-  background: linear-gradient(140deg, #7a9a8a 0%, #a0baaa 30%, #6a8a7a 60%, #b0caba 100%);
-  color: #2a4a3a;
-  text-shadow: none;
-}
-.option-btn[data-texture="long_day_at_work"] {
-  background: linear-gradient(135deg, #4a5a6a 0%, #6a7a8a 30%, #3a4a5a 60%, #7a8a9a 100%);
-}
-.option-btn[data-texture="havent_pooped"] {
-  background: linear-gradient(140deg, #7a6a4a 0%, #9a8a6a 30%, #6a5a3a 60%, #aa9a7a 100%);
-}
-.option-btn[data-texture="just_cleaned_room"] {
-  background: linear-gradient(145deg, #a0c8a0 0%, #c8e8c8 30%, #90b890 60%, #d8f0d8 100%);
-  color: #2a4a2a;
-  text-shadow: none;
-}
-.option-btn[data-texture="going_through_breakup"] {
-  background: linear-gradient(135deg, #8a4a5a 0%, #aa6a7a 30%, #7a3a4a 60%, #ba7a8a 100%);
-}
-.option-btn[data-texture="about_to_quit_job"] {
-  background: linear-gradient(125deg, #d87040 0%, #f09060 30%, #c86030 60%, #f4a070 100%);
+.option-btn.selected {
+  background: var(--selected);
+  border-color: var(--accent);
 }
 
-/* ===== TEXTURED BACKGROUNDS - Social ===== */
-.option-btn[data-texture="alone"] {
-  background: linear-gradient(150deg, #5a6a8a 0%, #7a8aaa 30%, #4a5a7a 60%, #8a9aba 100%);
-}
-.option-btn[data-texture="one_close_friend"] {
-  background: linear-gradient(140deg, #8a9a6a 0%, #aaba8a 30%, #7a8a5a 60%, #baca9a 100%);
-  color: #2a3a2a;
-  text-shadow: none;
-}
-.option-btn[data-texture="family"] {
-  background: linear-gradient(145deg, #d4a060 0%, #f4c880 30%, #c49050 60%, #f8d490 100%);
-}
-.option-btn[data-texture="crowded_city"] {
-  background: linear-gradient(130deg, #6a4a8a 0%, #8a6aaa 30%, #5a3a7a 60%, #9a7aba 100%);
-}
-.option-btn[data-texture="nobody_talks"] {
-  background: linear-gradient(150deg, #8a8a9a 0%, #aaaaaa 30%, #7a7a8a 60%, #bababa 100%);
-  color: #3a3a3a;
-  text-shadow: none;
+.option-btn.selected .texture-bg {
+  opacity: 0.22;
 }
 
 /* ===== NAVIGATION ===== */
@@ -460,9 +327,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px 0;
+  padding: 20px 24px 40px;
   position: relative;
   z-index: 1;
+  overflow-y: auto;
+  max-height: 100vh;
 }
 
 .result-main {
@@ -580,6 +449,12 @@
 .movie-meta {
   font-size: 0.85rem;
   color: var(--accent-dim);
+}
+
+.movie-cast {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.5;
 }
 
 .movie-description {

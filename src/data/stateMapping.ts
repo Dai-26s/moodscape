@@ -43,7 +43,13 @@ const moodMap: Record<Mood, Partial<StateVector>> = {
   missing_someone: { lonely: 30, nostalgia: 25, romance: 15, need_comfort: 20 },
   want_to_disappear: { alone: 30, quiet: 25, temporary_life: 20, healing: 15, acceptance: 15 },
   need_motivation: { hope: 25, energy: 20, adventure: 15, need_comfort: 10 },
-  just_want_silence: { quiet: 35, alone: 20, healing: 15, acceptance: 10 }
+  just_want_silence: { quiet: 35, alone: 20, healing: 15, acceptance: 10 },
+  grateful: { small_happiness: 25, hope: 20, acceptance: 20, healing: 10, family: 10 },
+  hopeful: { hope: 35, energy: 20, adventure: 15, small_happiness: 10 },
+  content: { acceptance: 25, small_happiness: 20, quiet: 15, healing: 10 },
+  curious: { adventure: 25, energy: 20, hope: 15, temporary_life: 10 },
+  inspired: { energy: 30, hope: 25, adventure: 20, small_happiness: 10 },
+  loved: { romance: 20, family: 20, healing: 20, hope: 15, small_happiness: 25 },
 };
 
 const bodyMap: Record<BodyState, Partial<StateVector>> = {
